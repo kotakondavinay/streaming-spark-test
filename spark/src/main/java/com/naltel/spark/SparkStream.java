@@ -12,7 +12,7 @@ public class SparkStream {
 	@SuppressWarnings({ "serial", "resource" })
 	public static void main(String[] args) {
 		SparkConf conf = new SparkConf().setMaster("local[2]").setAppName("Hello streaming");
-	    JavaStreamingContext stream = new JavaStreamingContext(conf, Durations.seconds(100));
+	    JavaStreamingContext stream = new JavaStreamingContext(conf, Durations.seconds(10));
 	    JavaReceiverInputDStream<String> strings = stream.socketTextStream("localhost", 9999);
 
 		JavaDStream<String> filteredStrings = strings.filter(new Function<String, Boolean>() {
